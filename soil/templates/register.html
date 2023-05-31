@@ -5,6 +5,11 @@
 </head>
 <body>
   <h1>Registration</h1>
+
+  {% if error_message %}
+    <p class="error">{{ error_message }}</p>
+    {% endif %}
+
   <form method="POST" action="/register">
     <label for="username">Username:</label>
     <input type="text" name="username" id="username" required>

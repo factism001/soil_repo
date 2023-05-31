@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, current_app
 from flask_sqlalchemy import SQLAlchemy
 from models.user import User, db  # Import the User model from your database module or file
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
@@ -17,10 +17,17 @@ with app.app_context():
     db.create_all()
 
 login_manager = LoginManager(app)
+#@login_manager.user_loader
+#def load_user(user_id):
+    # Retrieve the user object from the database based on the user_id
+    #return User.query.get(int(user_id))
+
 @login_manager.user_loader
 def load_user(user_id):
     # Retrieve the user object from the database based on the user_id
-    return User.query.get(int(user_id))
+    with app.app_context():
+        session = db.session
+        return session.get(User, int(user_id))
 
 
 @app.route("/")
@@ -42,22 +49,29 @@ def profile_page():
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    error_message = None
+    
     if request.method == "POST":
         # Process the registration form data
         username = request.form.get("username")
         email = request.form.get("email")
         password = request.form.get("password")
 
-        # Save the user's data in the database
-        user = User(username=username, email=email, password=password)
-        db.session.add(user)
-        db.session.commit()
+        # Check if the username already exists in the database
+        existing_user = User.query.filter_by(username=username).first()
+        if existing_user:
+            error_message = "Username already exists. Please choose another username."
+        else:
+            # Save the user's data in the database
+            user = User(username=username, email=email, password=password)
+            db.session.add(user)
+            db.session.commit()
 
-        # Redirect the user to the login page
-        return redirect("/login")
-    
+            # Redirect the user to the login page
+            return redirect("/login")
+
     # Render the registration form template for GET requests
-    return render_template("register.html")
+    return render_template("register.html", error_message=error_message)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
