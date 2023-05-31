@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, current_app
 from flask_sqlalchemy import SQLAlchemy
 from models.user import User, db  # Import the User model from your database module or file
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'opeyemi'
@@ -15,6 +16,8 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
 with app.app_context():
     db.create_all()
+
+migrate = Migrate(app, db)
 
 login_manager = LoginManager(app)
 #@login_manager.user_loader
