@@ -4,10 +4,17 @@ from models.user import User, db  # Import the User model from your database mod
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'your_database_uri_here'
-db = SQLAlchemy(app)
+app.config['SECRET_KEY'] = 'opeyemi'
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:opeyemi@localhost/soil"
+
+# Set the SQLAlchemy track modifications to False
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+#db = SQLAlchemy(app)
 # Initialize the db object
 db.init_app(app)
+with app.app_context():
+    db.create_all()
 
 login_manager = LoginManager(app)
 @login_manager.user_loader
@@ -38,10 +45,11 @@ def register():
     if request.method == "POST":
         # Process the registration form data
         username = request.form.get("username")
+        email = request.form.get("email")
         password = request.form.get("password")
 
         # Save the user's data in the database
-        user = User(username=username, password=password)
+        user = User(username=username, email=email, password=password)
         db.session.add(user)
         db.session.commit()
 
@@ -86,4 +94,7 @@ def logout():
 
 # Redirect the user to the login page
     #return redirect("/login")
-
+if __name__ == '__main__':
+    app.jinja_env.auto_reload = True
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
+    app.run(host='0.0.0.0', debug=True)

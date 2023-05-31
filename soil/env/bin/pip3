@@ -1,4 +1,4 @@
-#!/home/factism/soil/env/bin/python3
+#!/data/data/com.termux/files/home/soil_repo/soil/env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
