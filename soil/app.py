@@ -109,6 +109,10 @@ def logout():
     # Render the logout template
     return render_template("logout.html")
 
+@app.route("/map")
+def map_page():
+    return render_template("map.html")
+
 # Redirect the user to the login page
     #return redirect("/login")
 if __name__ == '__main__':
