@@ -1,5 +1,34 @@
-/*// JavaScript code for interacting with the map and retrieving user's current location
-function getUserLocation() {
+// JavaScript code for interacting with the map and retrieving user's current location
+/*function showUserLocation(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;*/
+/*var latitude = position.coords.latitude;
+var longitude = position.coords.longitude;*/
+
+var map = L.map('map').fitWorld();/*.setView([51.505, -0.09], 13);*/
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	maxZoom: 19,
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+map.locate({setView: true, maxZoom: 16});
+
+function onLocationFound(e) {
+    var radius = e.accuracy;
+
+    L.marker(e.latlng).addTo(map)
+        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+    L.circle(e.latlng, radius).addTo(map);
+}
+
+map.on('locationfound', onLocationFound);
+
+
+
+
+/*function getUserLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showUserLocation);
     } else {
@@ -13,7 +42,7 @@ function showUserLocation(position) {
 
     // Display the coordinates on the map and zoom to the location
     // Create a new map centered on the current location
-    const map = L.map("map").setView([latitude, longitude], 12);
+    
 
     // Add a marker to the map at the current location
     L.marker([latitude, longitude]).addTo(map);
@@ -25,8 +54,8 @@ function showUserLocation(position) {
 
 // Call the getUserLocation function when the page is loaded
 window.addEventListener("load", getUserLocation);
-*/
-var map = L.map('map').setView([51.505, -0.09], 13);
+
+/*var map = L.map('map').setView([51.505, -0.09], 13);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -65,14 +94,14 @@ map.on('click', onMapClick);
 
 var popup = L.popup();*/
 
-function onMapClick(e) {
+/*function onMapClick(e) {
     popup
         .setLatLng(e.latlng)
         .setContent("You clicked the map at " + e.latlng.toString())
         .openOn(map);
 }
 
-map.on('click', onMapClick);
+map.on('click', onMapClick);*/
 
 /*L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

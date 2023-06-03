@@ -3,7 +3,7 @@
 <head>
     <title>Map Page</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0", maximum-scale=1.0, user-scalable=no>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/map.css') }}" />
     <!--link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" /-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -17,7 +17,9 @@
     <h1>Map Page</h1>
 
     <div id="map"></div>
-    <!--button onclick="getCurrentLocation()">Get Current Location</button-->
+    <br>
+    <button onclick="getCurrentLocation()">Get Current Location</button>
     <script src="{{ url_for('static', filename='scripts/map.js') }}"></script>
+    <!--button onclick="getCurrentLocation()">Get Current Location</button-->
 </body>
 </html>
