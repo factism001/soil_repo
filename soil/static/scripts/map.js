@@ -5,7 +5,7 @@
 /*var latitude = position.coords.latitude;
 var longitude = position.coords.longitude;*/
 
-var map = L.map('map').fitWorld();/*.setView([51.505, -0.09], 13);*/
+var map = L.map('map').fitWorld();
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
