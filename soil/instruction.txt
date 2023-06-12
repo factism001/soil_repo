@@ -1,0 +1,2 @@
+use the following to intiate and migrate databases: pip install flask_migrate, flask db migrate, flask db upgrade
+if youve issues with database, use 'flask db downgrade' to roll back, 'flask db migrate -m <message>' to do a new migration and 'flask db upgrade' to apply the migration

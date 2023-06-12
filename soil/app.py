@@ -22,9 +22,9 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 #Initialize the db object
-#db.init_app(app)
-with app.app_context():
-    db.create_all()
+db.init_app(app)
+"""with app.app_context():
+    db.create_all()"""
 
 migrate = Migrate(app, db)
 
@@ -302,8 +302,9 @@ def soil_properties():
                 if key2 == 'value':
                     real = "name: {}\nvalue: {}".format(key, value2)
                     return render_template("soil_properties.html", latitude=latitude, longitude=longitude, result=real)
-                latitude = session.get('latitude')
-                longitude = session.get('longitude')
+
+                #latitude = session.get('latitude')
+                #longitude = session.get('longitude')
 
                 # Create a new instance of SoilData and set its attributes
                 soil_data = SoilData(latitude=latitude, longitude=longitude, prop=prop, depth=depth, value=data_val.get('value'))
@@ -312,6 +313,7 @@ def soil_properties():
                 # Save the soil data to the database
                 db.session.add(soil_data)
                 db.session.commit()
+                #return render_template("soil_properties.html", latitude=latitude, longitude=longitude, result=real)
 
     return render_template("soil_properties.html")
 
@@ -408,9 +410,9 @@ def soil_map():
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Register')
+    submit = SubmitField('Register')"""
 
-class LoginForm(FlaskForm):
+"""class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log In')"""
