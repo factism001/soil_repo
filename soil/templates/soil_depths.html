@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Soil Depths - My Soil App</title>
+</head>
+<body>
+  <h1>Soil Depths</h1>
+  <form method="POST" action="{{ url_for('soil_depths') }}">
+    {{ form.csrf_token }}
+    <div>
+      <label for="depth">Select Depth:</label>
+      <select name="depth" id="depth">
+        <option value="0-10">0-10 cm</option>
+        <option value="10-20">10-20 cm</option>
+        <option value="20-30">20-30 cm</option>
+        <!-- Add more depth options as needed -->
+      </select>
+    </div>
+    <div>
+      <input type="submit" value="Save Depth">
+    </div>
+  </form>
+  <p>Selected Depth: {{ depth }}</p>
+  <p>Display soil properties at the selected depth</p>
+</body>
+</html>
+

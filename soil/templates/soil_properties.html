@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Soil Properties - My Soil App</title>
+  <link
+    rel="shortcut icon"
+    href="{{ url_for('static', filename='image/dog.png') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+</head>
+<body>
+  <h1>Soil Properties</h1>
+  <form action="/soil-properties" method="post">
+    <input type="text" name="latitude" placeholder="Enter a lat" required />
+    <input type="text" name="longitude" placeholder="Enter a long" required />
+    <input type="text" name="property" placeholder="Enter a prop" required />
+    <input type="text" name="depth" placeholder="Enter a depth" required />
+    <input type="submit" value="Data" />
+  </form>
+  <!p>Latitude: {{ latitude }}</p>
+  <!p>Longitude: {{ longitude }}</p>
+  <!p>Display soil properties based on coordinates</p>
+  {% if result %}
+  <div class="result">{{ result }}</div>
+  {% endif %}
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Soil Profile</h2>
+  {% if soil_profile_data %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Depth</th>
+          <th>Property</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for data in soil_profile_data %}
+          <tr>
+            <td>{{ data.depth }}</td>
+            <td>{{ data.property }}</td>
+            <td>{{ data.value }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No soil profile data available.</p>
+  {% endif %}
+{% endblock %}
+
