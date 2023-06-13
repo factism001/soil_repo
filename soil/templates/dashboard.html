@@ -7,6 +7,8 @@
   <h1>Welcome, {{ user.username }}!</h1>
   <p>This is your dashboard.</p>
   <p><a href="{{ url_for('profile') }}">View profile</a></p>
+  <p><a href="{{ url_for('map') }}">View map</a>
+  </p>
   <p><a href="{{ url_for('soil_properties') }}">View Soil Properties</a></p>
   <p><a href="{{ url_for('soil_depths') }}">View Soil Depths</a></p>
   <p><a href="{{ url_for('logout') }}">Log Out</a></p>

@@ -22,9 +22,9 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 #Initialize the db object
-db.init_app(app)
-"""with app.app_context():
-    db.create_all()"""
+#db.init_app(app)
+with app.app_context():
+    db.create_all()
 
 migrate = Migrate(app, db)
 
@@ -386,12 +386,12 @@ def map_page():
 def map():
     user_id = session['user_id']
     user = User.query.get(user_id)
-    latitude = user.latitude
-    longitude = user.longitude
+    #latitude = user.latitude
+    #longitude = user.longitude
 
-    return render_template('map.html', latitude=latitude, longitude=longitude)
+    return render_template('map.html')#, latitude=latitude, longitude=longitude)
 
-@app.route('/soil-map', methods=['GET'])
+"""@app.route('/soil-map', methods=['GET'])
 @login_required
 def soil_map():
     # Perform logic to fetch soil properties and coordinates for the map
@@ -404,7 +404,7 @@ def soil_map():
         {'latitude': 39.9526, 'longitude': -75.1652, 'property': 'Property C'}
     ]
 
-    return render_template('soil_map.html', soil_properties=soil_properties)
+    return render_template('soil_map.html', soil_properties=soil_properties)"""
 
 """class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
