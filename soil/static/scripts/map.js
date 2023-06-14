@@ -11,7 +11,7 @@ var map = L.map('map', {
 
 map.locate({setView: true, maxZoom: 16});
 
-/*function onLocationFound(e) {
+function onLocationFound(e) {
     var radius = e.accuracy;
 
     var singleMarker = L.marker(e.latlng).addTo(map)
@@ -43,7 +43,7 @@ function showUserLocation(position) {
 
 // Print the location coordinates to the user
     var coordinatesMessage = "Your current location coordinates: " + latitude + ", " + longitude;
-    alert(coordinatesMessage);
+	alert(coordinatesMessage);
 }
 
 // Call the getUserLocation function when the page is loaded
@@ -68,21 +68,21 @@ var popup = L.popup();
 
 // Google Map Layer
 
-/*googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
     maxZoom: 20,
     subdomains:['mt0','mt1','mt2','mt3']
- });*/
+ });
 
 // Satelite Layer
-/*googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
    maxZoom: 20,
    subdomains:['mt0','mt1','mt2','mt3']
- });*/
+ });
 
-/*var baseLayers = {
+var baseLayers = {
     "Satellite":googleSat,
     "Google Map":googleStreets,
     "OpenStreetMap": osm
-};*/
+};
 
-/*L.control.layers(baseLayers).addTo(map);*/
+L.control.layers(baseLayers).addTo(map);
