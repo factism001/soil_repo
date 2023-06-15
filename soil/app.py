@@ -317,6 +317,73 @@ def soil_properties():
 
     return render_template("soil_properties.html")
 
+"""@app.route('/soil-data')
+@login_required
+def soil_data():
+    # Retrieve the user's soil data entries from the database
+    if current_user.is_authenticated:
+        soil_data = SoilData.query.filter_by(user=current_user).all()
+        return render_template('soil_data.html', soil_data=soil_data)
+    else:
+        return render_template('soil_data.html', soil_data=[])"""
+
+@app.route('/soil-data', methods=['GET', 'POST'])
+@login_required
+def soil_data():
+    if request.method == 'POST':
+        # Delete a row of data
+        data_id = request.form.get('delete_data')
+        if data_id:
+            soil_data = SoilData.query.get(data_id)
+            if soil_data:
+                if soil_data.user == current_user:
+                    # Delete the data if it belongs to the current user
+                    db.session.delete(soil_data)
+                    db.session.commit()
+                    flash('Soil data deleted successfully.', 'success')
+                else:
+                    flash('You are not authorized to delete this soil data.', 'danger')
+            else:
+                flash('Soil data not found.', 'danger')
+            return redirect(url_for('soil_data'))
+
+    # Retrieve the user's soil data entries from the database
+    if current_user.is_authenticated:
+        # Filter the data based on user inputs
+        id = request.args.get('id')
+        timestamp = request.args.get('timestamp')
+        latitude = request.args.get('latitude')
+        longitude = request.args.get('longitude')
+        depth = request.args.get('depth')
+        prop = request.args.get('property')
+        value = request.args.get('value')
+
+        # Build the query
+        query = SoilData.query.filter_by(user=current_user)
+
+        if id:
+            query = query.filter(SoilData.id == id)
+        if timestamp:
+            query = query.filter(SoilData.timestamp == timestamp)
+        if latitude:
+            query = query.filter(SoilData.latitude == latitude)
+        if longitude:
+            query = query.filter(SoilData.longitude == longitude)
+        if depth:
+            query = query.filter(SoilData.depth == depth)
+        if prop:
+            query = query.filter(SoilData.prop == prop)
+        if value:
+            query = query.filter(SoilData.value == value)
+
+        # Execute the query
+        soil_data = query.all()
+
+        return render_template('soil_data.html', soil_data=soil_data)
+    else:
+        return render_template('soil_data.html', soil_data=[])
+
+
 """@app.route('/dashboard')
 @login_required
 def dashboard():

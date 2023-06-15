@@ -1,0 +1,35 @@
+<!-- Create a new template 'soil_data.html' to display the soil data -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Saved Soil Data</title>
+</head>
+<body>
+  <h1>Saved Soil Data</h1>
+  {% if soil_data %}
+    <table>
+      <tr>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Property</th>
+        <th>Depth</th>
+	<th>Value</th>
+        <th>Timestamp</th>
+      </tr>
+      {% for data in soil_data %}
+        <tr>
+          <td>{{ data.latitude }}</td>
+          <td>{{ data.longitude }}</td>
+          <td>{{ data.prop }}</td>
+          <td>{{ data.depth }}</td>
+          <td>{{ data.value }}</td>
+	  <td>{{ data.timestamp }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>No saved soil data available.</p>
+  {% endif %}
+</body>
+</html>
+
