@@ -1,35 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype HTML>
+<html>
 <head>
-    <title>Map Page</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0", maximum-scale=1.0, user-scalable=no>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/map.css') }}" />
-    <!--link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" /-->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-    <!--link 
-        rel="stylesheet" 
-        href="http://leaflet.github.io/Leaflet.draw/leaflet.draw.css"/-->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin="">
-    </script>
+  <meta charset="utf-8">
+  <title>leaflet-measure</title>
+  <link rel="stylesheet" href="../bower_components/normalize.css/normalize.css">
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-measure@1.1.0/dist/leaflet-measure.css">
+  <style>
+    body {
+      font-size: 14px;
+      font-family: Helvetica, sans-serif;
+      font-weight: 400;
+      line-height: 1;
+      color: #222;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    body {
+      margin: 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.4em;
+      font-weight: normal;
+      line-height: 1;
+    }
+    #map {
+      height: 500px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Map Page</h1>
-
-    <div id="map"></div>
-    <br>
-    <!--button onclick="getUserLocation()">Get Current Location</button-->
-    <!--script src="http://leaflet.github.io/Leaflet.draw/leaflet.draw.js"</script-->
-
-    <script src="{{ url_for('static', filename='scripts/map.js') }}">
-    </script>
-    <button onclick="getCurrentLocation()">Get Current Location</button>
-    <p><a href="{{ url_for('dashboard') }}">Back to dashboard</a></p>
-    <p><a href="{{ url_for('soil_properties') }}">View Soil Properties</a></p>
+  <h1>leaflet-measure</h1>
+  <div id="map"></div>
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-measure@1.1.0/dist/leaflet-measure.js">
+  </script>
+  <script>
+  (function (L) {
+    var map = L.map('map').setView([29.7491289, -95.0807104], 16);
+	  var measureControl = L.control.measure({ 
+		  primaryLengthUnit: 'feet', 
+		  secondaryLengthUnit: 'meters', 
+		  primaryAreaUnit: 'hectares', 
+		  secondaryAreaUnit: undefined
+	  });
+	  measureControl.addTo(map);
+	  L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      minZoom: 0,
+      maxZoom: 18,
+      attribution: '&copy; Esri &mdash; Sources: Esri'
+    }).addTo(map);
+  })(window.L);
+</script>
 </body>
 </html>
