@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>leaflet-measure</title>
-  <link rel="stylesheet" href="../bower_components/normalize.css/normalize.css">
-  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-measure@1.1.0/dist/leaflet-measure.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-measure@3.1.0/dist/leaflet-measure.css">
   <style>
     body {
       font-size: 14px;
@@ -17,42 +16,103 @@
       -webkit-font-smoothing: antialiased;
     }
     body {
-      margin: 20px;
+      margin: 0 20px 20px;
     }
-    h1 {
-      margin: 0;
+    h1, h2 {
+      margin: 20px 0 0;
       font-size: 1.4em;
       font-weight: normal;
       line-height: 1;
     }
+    h1 {
+      display: inline-block;
+      font-size: 1.4em;
+    }
+    h2 {
+      font-size: 1.1em;
+    }
+    pre {
+      line-height: 1.5em;
+    }
+    p.github {
+      display: inline-block;
+      margin: 20px 0 0 20px;
+      font-size: 1.2em;
+    }
+    a, a:visited, a:hover, a:active, a:focus {
+      text-decoration: none;
+    }
     #map {
       height: 500px;
-      margin-top: 20px;
+      margin: 20px 20px 0 0;
     }
   </style>
 </head>
 <body>
   <h1>leaflet-measure</h1>
+  <p class="github"><a href="//github.com/ljagis/leaflet-measure">github.com/ljagis/leaflet-measure</a></p>
   <div id="map"></div>
-  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet-measure@1.1.0/dist/leaflet-measure.js">
-  </script>
+  <div class="leaflet-control search">
+        <input type="text" placeholder="Latitude,Longitude">
+        <button id="search-btn">Search</button>
+    </div>
   <script>
-  (function (L) {
-    var map = L.map('map').setView([29.7491289, -95.0807104], 16);
-	  var measureControl = L.control.measure({ 
-		  primaryLengthUnit: 'feet', 
-		  secondaryLengthUnit: 'meters', 
-		  primaryAreaUnit: 'hectares', 
-		  secondaryAreaUnit: undefined
-	  });
-	  measureControl.addTo(map);
-	  L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-      minZoom: 0,
-      maxZoom: 18,
-      attribution: '&copy; Esri &mdash; Sources: Esri'
-    }).addTo(map);
-  })(window.L);
-</script>
+	  // search button click 
+	  $('#search-btn').click(function(){ 
+		  var latlng = $('input').val();
+		  var latlngArr = latlng.split(',');
+		  var lat = latlngArr[0];
+		  var lng = latlngArr[1];
+		  map.setView([lat, lng], 8);
+		  marker.setLatLng([lat, lng]);
+  </script>
+  <h2><code>measurefinish</code> event data:</h2>
+  <pre id="eventoutput">...</pre>
+  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://unpkg.com/leaflet-measure@3.1.0/dist/leaflet-measure.js"></script>
+  <script>
+    (function(L, document) {
+      var map = L.map('map', {
+        center: [29.749817, -95.080757],
+        zoom: 16
+      });
+      var measureControl = L.control.measure({ 
+	      primaryLengthUnit: 'kilometers', 
+	      secondaryLengthUnit: 'meters', 
+	      primaryAreaUnit: 'hectares', 
+	      secondaryAreaUnit: 'sqmeters'
+      });
+	    measureControl.addTo(map);
+      L.tileLayer('//server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        minZoom: 14,
+        maxZoom: 18,
+        attribution: '&copy; Esri &mdash; Sources: Esri, DigitalGlobe, Earthstar Geographics, CNES/Airbus DS, GeoEye, USDA FSA, USGS, Getmapping, Aerogrid, IGN, IGP, swisstopo, and the GIS User Community'
+      }).addTo(map);
+      
+    // marker add 
+    var marker = L.marker([29.749817, -95.080757]).addTo(map);
+    
+    map.on('measurefinish', function(evt) {
+        writeResults(evt);
+      });
+
+      function writeResults(results) {
+        document.getElementById('eventoutput').innerHTML = JSON.stringify(
+          {
+            area: results.area,
+            areaDisplay: results.areaDisplay,
+            lastCoord: results.lastCoord,
+            length: results.length,
+            lengthDisplay: results.lengthDisplay,
+            pointCount: results.pointCount,
+            points: results.points
+          },
+          null,
+          2
+        );
+      }
+    })(window.L, window.document);
+  </script>
 </body>
 </html>
