@@ -63,32 +63,10 @@
   <script src="https://unpkg.com/leaflet-measure@3.1.0/dist/leaflet-measure.js"></script>
   <script>
     (function(L, document) {
-      var osm = L.tileLayer('//server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { 
-	      minZoom: 14, 
-	      maxZoom: 18, 
-	      attribution: '&copy; Esri &mdash; Sources: Esri, DigitalGlobe, Earthstar Geographics, CNES/Airbus DS, oEye, USDA FSA, USGS, Getmapping, Aerogrid, IGN, IGP, swisstopo, and the GIS User Community'
-      });
       var map = L.map('map', {
-        layers: [osm], 
-	center: [29.749817, -95.080757],
+        center: [29.749817, -95.080757],
         zoom: 16
       });
-      // Satelite Layer
-      googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{ 
-	      maxZoom: 20, 
-	      subdomains:['mt0','mt1','mt2','mt3']
-      });
-      // Google Map Layer
-      googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{ 
-	      maxZoom: 20, 
-	      subdomains:['mt0','mt1','mt2','mt3']
-      });
-      var baseLayers = { 
-	      "EsriMap": osm,
-	      "Satellite":googleSat, 
-	      "Google Map":googleStreets
-      };
-      L.control.layers(baseLayers).addTo(map);
       var measureControl = L.control.measure({ 
 	      primaryLengthUnit: 'kilometers', 
 	      secondaryLengthUnit: 'meters', 
@@ -96,11 +74,11 @@
 	      secondaryAreaUnit: 'sqmeters'
       });
 	    measureControl.addTo(map);
-      //L.tileLayer('//server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        //minZoom: 14,
-        //maxZoom: 18,
-        //attribution: '&copy; Esri &mdash; Sources: Esri, DigitalGlobe, Earthstar Geographics, CNES/Airbus DS, GeoEye, USDA FSA, USGS, Getmapping, Aerogrid, IGN, IGP, swisstopo, and the GIS User Community'
-      //}).addTo(map);
+      L.tileLayer('//server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        minZoom: 14,
+        maxZoom: 18,
+        attribution: '&copy; Esri &mdash; Sources: Esri, DigitalGlobe, Earthstar Geographics, CNES/Airbus DS, GeoEye, USDA FSA, USGS, Getmapping, Aerogrid, IGN, IGP, swisstopo, and the GIS User Community'
+      }).addTo(map);
       
     // marker add 
     var marker = L.marker([29.749817, -95.080757]).addTo(map);
