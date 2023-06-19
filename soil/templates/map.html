@@ -105,6 +105,16 @@
     // marker add 
     var marker = L.marker([29.749817, -95.080757]).addTo(map);
     
+    // search button click
+    map.on('#search-btn').click(function(){ 
+	    var latlng = $('input').val();
+	    var latlngArr = latlng.split(',');
+	    var lat = latlngArr[0];
+	    var lng = latlngArr[1];
+	    map.setView([lat, lng], 8);
+	    marker.setLatLng([lat, lng]);
+    });
+    
     map.on('measurefinish', function(evt) {
         writeResults(evt);
       });
@@ -125,6 +135,17 @@
         );
       }
     })(window.L, window.document);
+  </script>
+  <script>
+	  // search button click
+	  map.on('#search-btn').click(function(){ 
+		  var latlng = $('input').val();
+		  var latlngArr = latlng.split(',');
+		  var lat = latlngArr[0];
+		  var lng = latlngArr[1];
+		  map.setView([lat, lng], 8);
+		  marker.setLatLng([lat, lng]);
+	  });
   </script>
 </body>
 </html>
