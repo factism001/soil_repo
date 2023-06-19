@@ -10,9 +10,52 @@
 <body>
   <h1>Soil Properties</h1>
   <form action="/soil-properties" method="post">
-    <input type="text" name="latitude" placeholder="Enter a lat" required />
-    <input type="text" name="longitude" placeholder="Enter a long" required />
+    <input type="text" name="latitude" placeholder="Latitude of location" required  />
+    <input type="text" name="longitude" placeholder="Longitude of location" required />
     <input type="text" name="property" placeholder="Enter a prop" required />
+    <select name="property" required>
+      <option value="aluminium_extractable">Aluminium, extractable</option>
+      <option value="bulk_density">Bulk density, &lt;2mm fraction</option>
+      <option value="calcium_extractable">Calcium, extractable</option>
+      <option value="carbon_organic">Carbon, organic</option>
+      <option value="carbon_total">Carbon, total</option>
+      <option value="clay_content">Clay content</option>
+      <option value="crop_cover_2015">Cropland (2015)</option>
+      <option value="crop_cover_2016">Cropland (2016)</option>
+      <option value="crop_cover_2017">Cropland (2017)</option>
+      <option value="crop_cover_2018">Cropland (2018)</option>
+      <option value="crop_cover_2019">Cropland (2019)</option>
+      <option value="bedrock_depth">Depth to bedrock</option>
+      <option value="cation_exchange_capacity">Effective Cation Exchange Capacity</option>
+      <option value="fcc">Fertility Capability Classification</option>
+      <option value="iron_extractable">Iron, extractable</option>
+      <option value="land_cover_2015">Land Cover (2015)</option>
+      <option value="land_cover_2016">Land Cover (2016)</option>
+      <option value="land_cover_2017">Land Cover (2017)</option>
+      <option value="land_cover_2018">Land Cover (2018)</option>
+      <option value="land_cover_2019">Land Cover (2019)</option>
+      <option value="magnesium_extractable">Magnesium, extractable</option>
+      <option value="nitrogen_total">Nitrogen, total</option>
+      <option value="phosphorous_extractable">Phosphorous, extractable</option>
+      <option value="potassium_extractable">Potassium, extractable</option>
+      <option value="sand_content">Sand content</option>
+      <option value="silt content">Silt content</option>
+      <option value="slope_angle">Slope Angle</option>
+      <option value="stone_content">Stone content</option>
+      <option value="sulphur_extractable">Sulphur, extractable</option>
+      <option value="texture_class">USDA Texture class</option>
+      <option value="zinc_extractable">Zinc, extractable</option>
+      <option value="ph">pH</option>
+      <option value="user-friendly-value3">User-Friendly Value 3</option>
+      <option value="user-friendly-value3">User-Friendly Value 3</option>
+      <option value="user-friendly-value3">User-Friendly Value 3</option>
+      <option value="user-friendly-value3">User-Friendly Value 3</option>
+      <option value="user-friendly-value3">User-Friendly Value 3</option>
+    </select>
+    <select name="depth" required>
+      <option value="0-20">0-20 cm</option>
+      <option value="20-50">20-50 cm</option>
+    </select>
     <input type="text" name="depth" placeholder="Enter a depth" required />
     <input type="submit" value="Data" />
   </form>
