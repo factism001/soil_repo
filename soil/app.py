@@ -15,7 +15,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'opeyemi'
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:opeyemi@localhost/soil_db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:opeyemi@localhost:3306/soil_db?charset=utf8mb4"
 
 # Set the SQLAlchemy track modifications to False
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
