@@ -1,46 +1,88 @@
-// Initialize the map
-var map = L.map('map').setView([51.505, -0.09], 13);
+// JavaScript code for interacting with the map and retrieving user's current location
+var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	maxZoom: 19,
+	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+});
 
-// Add OpenStreetMap tiles
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
-}).addTo(map);
+var map = L.map('map', {
+       layers: [osm] // only add one!
+	    }).fitWorld();
+        /*.setView([-41.2858, 174.78682], 14);*/
 
-// Initialize the feature group to store drawn items
-var drawnItems = new L.FeatureGroup().addTo(map);
+map.locate({setView: true, maxZoom: 16});
 
-// Define the draw control options
-var drawControlOptions = {
-  draw: {
-    polyline: false,
-    circlemarker: false,
-    marker: false,
-    circlemarker: false,
-    polygon: {
-      allowIntersection: false,
-      showArea: true
+function onLocationFound(e) {
+    var radius = e.accuracy;
+
+    var singleMarker = L.marker(e.latlng).addTo(map)
+        .bindPopup("Your location coordinates are: " + e.latlng + "and you are" + radius + " meters from this point").openPopup();
+
+    L.circle(e.latlng, radius).addTo(map);
+}
+
+function onLocationError(e) {
+    alert(e.message);
+}
+
+map.on('locationerror', onLocationError);
+
+map.on('locationfound', onLocationFound);
+
+
+function getUserLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showUserLocation);
+    } else {
+        alert("Geolocation is not supported by this browser.");
     }
-  },
-  edit: {
-    featureGroup: drawnItems
-  }
+}
+
+function showUserLocation(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+// Print the location coordinates to the user
+    var coordinatesMessage = "Your current location coordinates: " + latitude + ", " + longitude;
+	alert(coordinatesMessage);
+}
+
+// Call the getUserLocation function when the page is loaded
+window.addEventListener("load", getUserLocation);
+
+function onMapClick(e) {
+    alert("You clicked the map at " + e.latlng);
+}
+
+map.on('click', onMapClick);
+
+var popup = L.popup();
+
+/*function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng
+.toString())
+        .openOn(map);
+}
+                                                        map.on('click', onMapClick);*/
+
+// Google Map Layer
+
+googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+ });
+
+// Satelite Layer
+googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+   maxZoom: 20,
+   subdomains:['mt0','mt1','mt2','mt3']
+ });
+
+var baseLayers = {
+    "Satellite":googleSat,
+    "Google Map":googleStreets,
+    "OpenStreetMap": osm
 };
 
-// Add the draw control to the map
-var drawControl = new L.Control.Draw(drawControlOptions).addTo(map);
-
-// Event handler for drawing created
-map.on('draw:created', function(e) {
-  var layer = e.layer;
-  drawnItems.addLayer(layer);
-
-  // Calculate and display the area of the drawn polygon
-  var area = L.GeometryUtil.geodesicArea(layer.getLatLngs()[0]);
-  alert("Area: " + area.toFixed(2) + " square meters");
-});
-
-// Event handler for draw deleted
-map.on('draw:deleted', function(e) {
-  drawnItems.clearLayers();
-});
-
+L.control.layers(baseLayers).addTo(map);
