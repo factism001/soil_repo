@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html>
 <head>
   <title>Soil Properties - My Soil App</title>
@@ -12,8 +12,8 @@
   <form action="/soil-properties" method="post">
     <input type="text" name="latitude" placeholder="Latitude of location" required  />
     <input type="text" name="longitude" placeholder="Longitude of location" required />
-    <input type="text" name="property" placeholder="Enter a prop" required />
-    <select name="property" required>
+    <!--input type="text" name="property" placeholder="Enter a prop" /-->
+    <select type="text" name="property" required>
       <option value="aluminium_extractable">Aluminium, extractable</option>
       <option value="bulk_density">Bulk density, &lt;2mm fraction</option>
       <option value="calcium_extractable">Calcium, extractable</option>
@@ -56,7 +56,7 @@
       <option value="0-20">0-20 cm</option>
       <option value="20-50">20-50 cm</option>
     </select>
-    <input type="text" name="depth" placeholder="Enter a depth" required />
+    <input type="text" name="depth" placeholder="Enter a depth" />
     <input type="submit" value="Data" />
   </form>
   <!p>Latitude: {{ latitude }}</p>
