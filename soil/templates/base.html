@@ -2,8 +2,20 @@
 <html>
 <head>
   <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
 </head>
 <body>
+	<!-- Header Section -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('register') }}">Sign Up</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+      </ul>
+    </nav>
+  </header>
   {% with messages = get_flashed_messages() %}
     {% if messages %}
       <ul>
@@ -14,7 +26,19 @@
     {% endif %}
   {% endwith %}
 
+  <!-- Content Section -->
   {% block content %}{% endblock %}
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/your-linkedin-profile" target="_blank">LinkedIn</a>
+        <a href="https://github.com/factism001/" target="_blank">GitHub</a>
+      </div>
+      <p>&copy; 2023 Soil Analyst. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
 

@@ -1,36 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Soil Analyst</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
-</head>
-<body>
-  <!-- Header Section -->
-  <header>
-    <nav>
-      <ul>
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('register') }}">Sign Up</a></li>
-        <li><a href="{{ url_for('logout') }}">logout</a></li>
-        <li><a href="{{ url_for('login') }}">Login</a></li>
-      </ul>
-    </nav>
-  </header>
+{% extends 'base.html' %}
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <h1>Welcome to Soil Analyst</h1>
-      <p>Analyze your soil, get real-time location, and explore soil properties for African farmers.</p>
-      <a href="{{ url_for('register') }}" class="cta-button">Get Started</a>
-    </div>
-  </section>
+{% block title %}Soil Analyst{% endblock %}
 
-  <!-- Features Section -->
-  <section class="features">
-    <div class="container">
-      <h2>Key Features</h2>
-      <div class="feature">
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <h1>Welcome to Soil Analyst</h1>
+    <p>Analyze your soil, get real-time location, and explore soil properties for African farmers.</p>
+    <a href="{{ url_for('register') }}" class="cta-button">Get Started</a>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+  <div class="container">
+    <h2>Key Features</h2>
+    <div class="feature">
         <img src="{{ url_for('static', filename='styles/realtime_location.jpg') }}" alt="Feature 1">
         <h3>Real-time Location</h3>
         <p>Get your current location and coordinates instantly.</p>
@@ -45,14 +31,14 @@
         <h3>Soil Properties</h3>
         <p>Access detailed soil properties for your location.</p>
       </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Testimonials Section -->
-  <section class="testimonials">
-    <div class="container">
-      <h2>What Our Users Say</h2>
-      <div class="testimonial">
+<!-- Testimonials Section -->
+<section class="testimonials">
+  <div class="container">
+    <h2>What Our Users Say</h2>
+    <div class="testimonial">
         <img src="{{ url_for('static', filename='user1.jpg') }}" alt="User 1">
         <blockquote>"Soil Analyst has made it easy for me to understand the characteristics of my soil. It's a valuable tool for farmers!"</blockquote>
         <cite>- John Doe, Farmer</cite>
@@ -62,20 +48,7 @@
         <blockquote>"The precision and accuracy of the soil analysis provided by Soil Analyst are impressive. Highly recommended!"</blockquote>
         <cite>- Jane Smith, Agronomist</cite>
       </div>
-    </div>
-  </section>
+  </div>
+</section>
+{% endblock %}
 
-  <!-- Footer Section -->
-  <footer>
-    <div class="container">
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/your-linkedin-profile" target="_blank">LinkedIn</a>
-        <a href="https://github.com/factism001/" target="_blank">GitHub</a>
-      </div>
-      <p>&copy; 2023 Soil Analyst. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
-</body>
-</html>
