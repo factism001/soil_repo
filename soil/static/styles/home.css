@@ -1,0 +1,163 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Header */
+  header {
+    background-color: #009933;
+    padding: 20px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  /* Hero Section */
+  .hero {
+    background-color: #f1f1f1;
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  .hero h1 {
+    font-size: 36px;
+    color: #009933;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    background-color: #009933;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  /* Features Section */
+  .features {
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  .features h2 {
+    font-size: 28px;
+    color: #009933;
+    margin-bottom: 20px;
+  }
+  
+  .feature {
+    display: inline-block;
+    width: 300px;
+    margin: 0 20px;
+  }
+  
+  .feature img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .feature h3 {
+    font-size: 20px;
+    color: #009933;
+    margin-bottom: 10px;
+  }
+  
+  .feature p {
+    font-size: 16px;
+  }
+  
+  /* Testimonials Section */
+  .testimonials {
+    background-color: #f1f1f1;
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  .testimonials h2 {
+    font-size: 28px;
+    color: #009933;
+    margin-bottom: 20px;
+  }
+  
+  .testimonial {
+    margin-bottom: 30px;
+  }
+  
+  .testimonial img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  blockquote {
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  
+  cite {
+    font-size: 16px;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #009933;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 24px;
+    }
+  
+    .hero p {
+      font-size: 16px;
+    }
+  
+    .feature {
+      width: 100%;
+      margin: 0 0 30px 0;
+    }
+  }  
