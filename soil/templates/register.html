@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Register - My Soil App</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+Register - My Soil App
+{% endblock %}
+
+{% block content %}
   <h1>Register</h1>
   <form method="POST" action="{{ url_for('register') }}">
     {{ form.csrf_token }}
@@ -29,6 +30,4 @@
       {{ form.submit }}
     </div>
   </form>
-</body>
-</html>
-
+{% endblock %}
