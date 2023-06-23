@@ -1,54 +1,10 @@
-<DOCTYPE html>
-<html>
-<head>
-  <title>Soil Properties - My Soil App</title>
-  <link
-    rel="shortcut icon"
-    href="{{ url_for('static', filename='image/dog.png') }}"/>
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}" />
-  <script>
-    function updateDepthOptions() {
-      var propertySelect = document.getElementById('propertySelect');
-      var depthSelect = document.getElementById('depthSelect');
+{% extends 'base.html' %}
 
-      // Reset depth options
-      depthSelect.innerHTML = '';
+{% block title %}Soil Properties - My Soil App{% endblock %}
 
-      // Get the selected property value
-      var selectedProperty = propertySelect.value;
-
-      // Add depth options based on the selected property
-      if (
-        selectedProperty === 'crop_cover_2015' ||
-        selectedProperty === 'crop_cover_2016' ||
-        selectedProperty === 'crop_cover_2017' || 
-	selectedProperty === 'crop_cover_2018' || 
-	selectedProperty === 'crop_cover_2019'
-      ) {
-        depthSelect.innerHTML = '<option value="0">0 cm</option>';
-      } else if (selectedProperty === 'bedrock_depth') {
-        depthSelect.innerHTML = '<option value="0-200">0-200 cm</option>';
-      } else if (
-        selectedProperty === 'land_cover_2015' ||
-        selectedProperty === 'land_cover_2016' ||
-        selectedProperty === 'land_cover_2017' || 
-	selectedProperty === 'land_cover_2018' || 
-	selectedProperty === 'land_cover_2019' || 
-	selectedProperty === 'slope_angle'
-      ) {
-        depthSelect.innerHTML = '<option value="0">0 cm</option>';
-      } else if (selectedProperty === 'fcc') {
-        depthSelect.innerHTML = '<option value="0-50">0-50 cm</option>';
-      } else {
-        // Default depth option for other properties
-        depthSelect.innerHTML = '<option value="0-20">0-20 cm</option>' +
-                                '<option value="20-50">20-50 cm</option>';
-      }
-    }
-  </script>
-</head>
-<body>
-  <h1>Soil Properties</h1>
+{% block content %}
+<h1>Soil Properties</h1>
+  <script src="{{ url_for('static', filename='scripts/soil_properties.js') }}"></script>
   <form action="/soil-properties" method="post">
     <input type="text" name="latitude" placeholder="Latitude of location" required  />
     <input type="text" name="longitude" placeholder="Longitude of location" required />
@@ -101,5 +57,4 @@
   {% endif %}
   <p><a href="{{ url_for('dashboard') }}">Back to dashboard</a></p>
   <p><a href="{{ url_for('map') }}">Back to map</a></p>
-</body>
-</html>
+{% endblock %}
