@@ -2,10 +2,15 @@
 
 {% block title %}Soil Properties - My Soil App{% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}"/>
+{% endblock %}
+
 {% block content %}
-<h1>Soil Properties</h1>
+<h1 class="title">Soil Properties</h1>
   <script src="{{ url_for('static', filename='scripts/soil_properties.js') }}"></script>
-  <form action="/soil-properties" method="post">
+  <div class="register">
+    <form action="/soil-properties" method="post">
     <input type="text" name="latitude" placeholder="Latitude of location" required  />
     <input type="text" name="longitude" placeholder="Longitude of location" required />
     <!--input type="text" name="property" placeholder="Enter a prop" /-->
@@ -57,4 +62,5 @@
   {% endif %}
   <p><a href="{{ url_for('dashboard') }}">Back to dashboard</a></p>
   <p><a href="{{ url_for('map') }}">Back to map</a></p>
+  </div>
 {% endblock %}

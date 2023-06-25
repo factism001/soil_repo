@@ -4,8 +4,12 @@
 Register - My Soil App
 {% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/register.css') }}">
+{% endblock %}
+
 {% block content %}
-  <h1>Register</h1>
+  <h2 class="title">Register</h2>
   <form method="POST" action="{{ url_for('register') }}">
     {{ form.csrf_token }}
     <div>
