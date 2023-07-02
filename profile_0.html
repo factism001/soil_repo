@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>User Profile</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Add your stylesheets or scripts here -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='soil/styles/home.css') }}">
+      </head>
+      <body>
+	      <!-- Header Section -->
+	<header>
+	  <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </nav>
+	</header>
+	  <section class="hero">
+            <div class="container">
+              <h1>Welcome to Soil Analyst</h1>
+              <p>Analyze your soil, get real-time location, and explore soil properties for African farmers.</p>
+              <a href="{{ url_for('register') }}" class="cta-button">Get Started</a>
+            </div>
+          </section>
+
+          <!-- Features Section -->
+          <section class="features">
+            <div class="container">
+              <h2>Key Features</h2>
+              <div class="feature">
+                <img src="{{ url_for('static', filename='styles/realtime_location.jpg') }}" alt="Feature 1">
+                <h3>Real-time Location</h3>
+                <p>Get your current location and coordinates instantly.</p>
+              </div>
+              <div class="feature">
+                <img src="{{ url_for('static', filename='styles/polgon_area.png') }}" alt="Feature 2">
+                <h3>Land Measurement</h3>
+                <p>Measure the area of your land using coordinates.</p>
+              </div>
+              <div class="feature">
+                <img src="{{ url_for('static', filename='styles/soilproperties.jpg') }}" alt="Feature 3">
+                <h3>Soil Properties</h3>
+                <p>Access detailed soil properties for your location.</p>
+              </div>
+            </div>   
+          </section>
+
+          <!-- Testimonials Section -->
+          <section class="testimonials">
+            <div class="container">
+              <h2>What Our Users Say</h2>
+              <div class="testimonial">
+                <img src="{{ url_for('static', filename='user1.jpg') }}" alt="User 1">
+                <blockquote>"Soil Analyst has made it easy for me to understand the characteristics of my soil. It's a valuable tool for farmers!"</blockquote>
+                <cite>- John Doe, Farmer</cite>
+              </div>
+              <div class="testimonial">
+                <img src="{{ url_for('static', filename='user2.jpg') }}" alt="User 2">
+                  <blockquote>"The precision and accuracy of the soil analysis provided by Soil Analyst are impressive. Highly recommended!"</blockquote>
+                  <cite>- Jane Smith, Agronomist</cite>
+              </div>
+            </div>
+          </section>
+	  <!-- Footer Section -->
+          <footer>
+	    <div class="container">
+	      <div class="footer-links">
+                <a href="https://www.linkedin.com/your-linkedin-profile" target="_blank">LinkedIn</a>
+                <a href="https://github.com/factism001/" target="_blank">GitHub</a>
+              </div>
+              <p>&copy; 2023 Soil Analyst. All rights reserved.</p>
+            </div>
+          </footer>
+      </body>
+</html> 
