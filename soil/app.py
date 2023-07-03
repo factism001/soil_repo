@@ -313,8 +313,8 @@ def soil_properties():
                 soil_data.user = current_user  # assign the logged-in user to the soil data
 
                 # Save the soil data to the database
-                #db.session.add(soil_data)
-                #db.session.commit()
+                db.session.add(soil_data)
+                db.session.commit()
                 #return render_template("soil_properties.html", latitude=latitude, longitude=longitude, result=real)
 
     return render_template("soil_properties.html")
