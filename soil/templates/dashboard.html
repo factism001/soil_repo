@@ -4,13 +4,20 @@
 Dashboard - My Soil App
 {% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard.css') }}">
+{% endblock %}
+
 {% block content %}
-<h1>Welcome, {{ user.username }}!</h1>
+<div class="dashboard">
+  <h1>Welcome, {{ user.username }}!</h1>
   <p>This is your dashboard.</p>
-  <p><a href="{{ url_for('map') }}">Get your real-time location</a>
-  </p>
-  <p><a href="{{ url_for('soil_properties') }}">Determine Soil Properties</a></p>
-  <p><a href="{{ url_for('soil_data') }}">View Previously Saved Soil Data</a></p>
-  <p><a href="{{ url_for('logout') }}">Log Out</a></p>
+  <ul class="dashboard-links">
+    <li><a href="{{ url_for('map') }}">Get your real-time location</a></li>
+    <li><a href="{{ url_for('soil_properties') }}">Determine Soil Properties</a></li>
+    <li><a href="{{ url_for('soil_data') }}">View Previously Saved Soil Data</a></li>
+    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+  </ul>
+</div>
 {% endblock %}
 
