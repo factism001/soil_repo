@@ -16,6 +16,8 @@ body {
   header {
     background-color: #009933;
     padding: 20px;
+    padding: 20px;
+    text-align: center;
   }
   
   nav ul {
@@ -149,7 +151,7 @@ body {
   /* Media Queries */
   @media (max-width: 768px) {
     .hero h1 {
-      font-size: 24px;
+      font-size: 20px;
     }
   
     .hero p {
@@ -160,7 +162,12 @@ body {
       width: 100%;
       margin: 0 0 30px 0;
     }
-  } 
+  }
+
+  /* Content */
+.content {
+  padding-bottom: 80px; /* Adjust to account for footer height */
+}
 
   /* Footer styles */
 footer {

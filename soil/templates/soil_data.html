@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/soil_data.css') }}">
+{% endblock %}
+
 {% block content %}
   <h1>Soil Data</h1>
   <p><a href="{{ url_for('dashboard') }}">Back to dashboard</a></p>

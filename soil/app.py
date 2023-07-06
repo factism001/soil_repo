@@ -129,12 +129,6 @@ def login():
 
     return render_template('login.html', form=form)
 
-"""@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('home'))"""
-
 @app.route('/logout')
 @login_required
 def logout():
@@ -317,7 +311,7 @@ def soil_properties():
                 db.session.commit()
                 #return render_template("soil_properties.html", latitude=latitude, longitude=longitude, result=real)
 
-    return render_template("soil_properties.html")
+    return render_template("soil_properties.html", show_dashboard_link=True)
 
 """@app.route('/soil-data')
 @login_required
@@ -381,9 +375,9 @@ def soil_data():
         # Execute the query
         soil_data = query.all()
 
-        return render_template('soil_data.html', soil_data=soil_data)
+        return render_template('soil_data.html', soil_data=soil_data, show_dashboard_link=True)
     else:
-        return render_template('soil_data.html', soil_data=[])
+        return render_template('soil_data.html', soil_data=[], show_dashboard_link=True)
 
 
 """@app.route('/dashboard')
@@ -458,7 +452,7 @@ def map():
     #latitude = user.latitude
     #longitude = user.longitude
 
-    return render_template('map.html')#, latitude=latitude, longitude=longitude)
+    return render_template('map.html', show_dashboard_link=True)#, latitude=latitude, longitude=longitude)
 
 """@app.route('/soil-map', methods=['GET'])
 @login_required
