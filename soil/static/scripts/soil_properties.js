@@ -1,4 +1,5 @@
 function updateDepthOptions() {
+      // Controls the relationship between property and depth selected by user
       var propertySelect = document.getElementById('propertySelect');
       var depthSelect = document.getElementById('depthSelect');
 

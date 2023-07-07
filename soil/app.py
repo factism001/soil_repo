@@ -26,6 +26,7 @@ db = SQLAlchemy(app)
 with app.app_context():
     db.create_all()
 
+# Migration of database
 migrate = Migrate(app, db)
 
 login_manager = LoginManager(app)
@@ -43,6 +44,7 @@ def load_user(user_id):
         session = db.session
         return session.get(User, int(user_id))"""
 
+# Define the User model
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
@@ -57,12 +59,14 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+# Define the rsgistration form
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
 
+# Define the soil data model
 class SoilData(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     latitude = db.Column(db.Float, nullable=False)
@@ -77,20 +81,24 @@ class SoilData(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     user = db.relationship('User', backref=db.backref('soil_data', lazy=True))
 
+# Define the login form
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log In')
 
+# Define the home route
 @app.route('/')
 def home():
     return render_template('home.html')
 
 
+# Define the registration route
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
+        # Process the registration form data
         username = form.username.data
         password = form.password.data
 
@@ -99,9 +107,11 @@ def register():
             flash('Username already exists. Please choose a different username.', 'danger')
             return redirect(url_for('register'))
 
+        # Create a new user instance
         user = User(username=username)
         user.set_password(password)
 
+        # Add the user to the database
         db.session.add(user)
         db.session.commit()
 
@@ -110,16 +120,18 @@ def register():
 
     return render_template('register.html', form=form)
 
+# Define the login route
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
+        # Process the login form data
         username = form.username.data
         password = form.password.data
 
         user = User.query.filter_by(username=username).first()
         if user and user.check_password(password):
-            # Set the 'user_id' in the session upon successful login
+            # Set the 'user_id' in the session and login the user
             session['user_id'] = user.id
             login_user(user)
             return redirect(url_for('dashboard'))
@@ -129,6 +141,7 @@ def login():
 
     return render_template('login.html', form=form)
 
+# Define the logout route
 @app.route('/logout')
 @login_required
 def logout():
@@ -137,6 +150,7 @@ def logout():
     return redirect(url_for('home'))
 
 
+# Define the dashboard route
 @app.route('/dashboard')
 @login_required
 def dashboard():
@@ -272,6 +286,7 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+# Define the soil properties route
 @app.route("/soil-properties", methods=("GET", "POST"))
 def soil_properties():
     if request.method == "POST":
@@ -285,6 +300,7 @@ def soil_properties():
         session["depth"] = depth
         flash('Location coordinates saved successfully.', 'success')
         
+        # Make API request to fetch soil properties based on coordinates
         url = "https://api.isda-africa.com/v1/soilproperty?key=AIzaSyCruMPt43aekqITCooCNWGombhbcor3cf4&lat={}&lon={}&property={}&depth={}".format(latitude, longitude, prop, depth)
         response = requests.get(url)
         data = response.json()
@@ -323,6 +339,7 @@ def soil_data():
     else:
         return render_template('soil_data.html', soil_data=[])"""
 
+# Define the soil data route
 @app.route('/soil-data', methods=['GET', 'POST'])
 @login_required
 def soil_data():
@@ -413,7 +430,7 @@ def soil_properties():
 
     return render_template('input_coordinates.html')"""
 
-@app.route('/soil-profile/<latitude>/<longitude>')
+"""@app.route('/soil-profile/<latitude>/<longitude>')
 #@login_required
 def soil_profile(latitude, longitude):
     # Make API request to fetch soil profile based on coordinates
@@ -424,9 +441,9 @@ def soil_profile(latitude, longitude):
         return render_template('soil_profile.html', soil_profile_data=soil_profile_data)
     else:
         flash('Failed to fetch soil profile. Please try again.', 'danger')
-        return redirect('/dashboard')
+        return redirect('/dashboard')"""
 
-@app.route('/profile', methods=['GET', 'POST'])
+"""@app.route('/profile', methods=['GET', 'POST'])
 #@login_required
 def profile():
     user_id = session['user_id']
@@ -438,12 +455,13 @@ def profile():
         db.session.commit()
         flash('Location coordinates saved successfully.', 'success')
 
-    return render_template('profile.html', user=user)
+    return render_template('profile.html', user=user)"""
 
 """@app.route("/map")
 def map_page():
     return render_template("map.html")"""
 
+# Define the location map route
 @app.route('/map')
 @login_required
 def map():
@@ -480,7 +498,7 @@ def soil_map():
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log In')"""
 
-@app.route('/soil-depths', methods=['GET', 'POST'])
+"""@app.route('/soil-depths', methods=['GET', 'POST'])
 @login_required
 def soil_depths():
     if request.method == 'POST':
@@ -494,8 +512,9 @@ def soil_depths():
     # Perform logic to fetch and display soil properties at the selected depth
     # Replace this with your own implementation
 
-    return render_template('soil_depths.html', depth=depth)
+    return render_template('soil_depths.html', depth=depth)"""
 
+# Define the error handlers
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
@@ -507,6 +526,7 @@ def internal_server_error(e):
 
 # Redirect the user to the login page
     #return redirect("/login")
+# Run the flask application
 if __name__ == '__main__':
     app.jinja_env.auto_reload = True
     app.config['TEMPLATES_AUTO_RELOAD'] = True

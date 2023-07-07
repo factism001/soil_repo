@@ -8,35 +8,43 @@
     });
     //osm.addTo(map);
     
-var esri = L.tileLayer('//server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { 
-  minZoom: 14, 
-  maxZoom: 20, 
-  attribution: '&copy; Esri &mdash; Sources: Esri, CNES/Airbus DS, USDA'
-});
-esri.addTo(map);
+   // ESRI map layer
+   var esri = L.tileLayer('//server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { 
+	   minZoom: 14, 
+	   maxZoom: 20, 
+	   attribution: '&copy; Esri &mdash; Sources: Esri, CNES/Airbus DS, USDA'
+   });
+   esri.addTo(map);
 
+// Google satellite layer
 googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{ 
   maxZoom: 20, 
   subdomains:['mt0','mt1','mt2','mt3']
 });
-    // Google Map Layer
+    // Google streets Layer
 googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{ 
   maxZoom: 20, 
   subdomains:['mt0','mt1','mt2','mt3']
 });
 
+// Define the base layer
 var baseLayers = {
     "EsriMap": esri, 
     "Openstreet": osm, 
     "Satellite":googleSat, 
     "Google Map":googleStreets
 };
+
+// Add layer control to the map
 L.control.layers(baseLayers).addTo(map);
 
-    if (!navigator.geolocation) {
+    
+// Check if geolocation is supported
+if (!navigator.geolocation) {
         console.log("Your browser doesn't support the geolocation feature!");
     } else {
-        setInterval(() => {
+        // Get the current position every minute
+	setInterval(() => {
             navigator.geolocation.getCurrentPosition(getPosition);
         }, 60000);
     }
@@ -48,7 +56,8 @@ L.control.layers(baseLayers).addTo(map);
         var long = position.coords.longitude;
         var accuracy = position.coords.accuracy;
 
-        if (marker) {
+        // Remove existing marker and circle from the map
+	if (marker) {
             map.removeLayer(marker);
         }
 
@@ -56,16 +65,19 @@ L.control.layers(baseLayers).addTo(map);
             map.removeLayer(circle);
         }
 
-        marker = L.marker([lat, long]);
+        // Create marker and circle with current position
+	marker = L.marker([lat, long]);
         circle = L.circle([lat, long], { radius: accuracy });
 
         var featureGroup = L.featureGroup([marker, circle]).addTo(map);
 
-        map.fitBounds(featureGroup.getBounds());
+        // Fit themap to the bound of the feature group
+	map.fitBounds(featureGroup.getBounds());
 
         console.log("Your coordinates are: Lat: " + lat + " Long: " + long + " Accuracy: " + accuracy);
     }
 
+    // Define the unit of the polygon measurements
     var measureControl = L.control.measure({
         primaryLengthUnit: 'kilometers',
         secondaryLengthUnit: 'meters',
@@ -79,7 +91,8 @@ L.control.layers(baseLayers).addTo(map);
         writeResults(evt);
         });
             function writeResults(results) {
-        document.getElementById('eventoutput').innerHTML = JSON.stringify(
+        // Display measurement results as JSON string in the 'eventoutput' element
+	document.getElementById('eventoutput').innerHTML = JSON.stringify(
           {
             area: results.area,
             areaDisplay: results.areaDisplay,
@@ -95,8 +108,10 @@ L.control.layers(baseLayers).addTo(map);
         }
 
 
+    // Define position of map search control
     var searchControl = L.control({ position: "bottomright" });
 
+    // Display the map search element
     searchControl.onAdd = function () {
         var container = L.DomUtil.create("div", "leaflet-control-search");
 
@@ -112,7 +127,8 @@ L.control.layers(baseLayers).addTo(map);
     
 
     function searchCoordinates() {
-        var input = document.querySelector(".leaflet-control-search input").value;
+        // Define set coordinate search control input box
+	var input = document.querySelector(".leaflet-control-search input").value;
         var coordinates = input.split(",");
 
         if (coordinates.length === 2) {
@@ -130,6 +146,7 @@ L.control.layers(baseLayers).addTo(map);
         }
     }
 
+    // Create the coordinates search button
     var searchButton = document.getElementById("search-btn");
     searchButton.addEventListener("click", searchCoordinates);
 })(L, document);
