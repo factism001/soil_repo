@@ -10,7 +10,7 @@
     
    // ESRI map layer
    var esri = L.tileLayer('//server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { 
-	   minZoom: 14, 
+	   minZoom: 6, 
 	   maxZoom: 20, 
 	   attribution: '&copy; Esri &mdash; Sources: Esri, CNES/Airbus DS, USDA'
    });
