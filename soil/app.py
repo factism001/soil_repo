@@ -15,15 +15,16 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'opeyemi'
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://factism:soilanalystapp@factism.mysql.pythonanywhere-services.com/factism$soil_db?charset=utf8mb4"
+#app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://factism:soilanalystapp@factism.mysql.pythonanywhere-services.com/factism$soil_db?charset=utf8mb4"
 
 SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{username}:{password}@{hostname}/{databasename}".format(
-    username="the username from the 'Databases' tab",
-    password="the password you set on the 'Databases' tab",
-    hostname="the database host address from the 'Databases' tab",
-    databasename="the database name you chose, probably yourusername$comments",
+    username="factism",
+    password="soilanalystapp",
+    hostname="factism.mysql.pythonanywhere-services.com",
+    databasename="factism$soil_db",
 )
 app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 # Set the SQLAlchemy track modifications to False
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
