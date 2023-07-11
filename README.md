@@ -6,7 +6,7 @@
 
 ### 🏠 [Homepage](https://factism001.github.io/soilanalyst/)
 
-### ✨ [Demo](https://youtu.be/2JVDvFP6H8U)
+### ✨ [Demo](https://factism.pythonanywhere.com)
 
 ## Usage
 
