@@ -98,7 +98,7 @@ class LoginForm(FlaskForm):
 # Define the home route
 @app.route('/')
 def home():
-    return render_template('home.html', show_register_link=True, show_login_link=True, show_register_link=True)
+    return render_template('home.html', show_register_link=True, show_login_link=True, show_home_link=True)
 
 
 # Define the registration route
