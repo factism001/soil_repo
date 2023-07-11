@@ -130,15 +130,18 @@ nav ul li a {
 #about h2 {
   font-size: 32px;
   margin-bottom: 40px;
+  text-align: center;
 }
 
 #about p {
   margin-bottom: 20px;
+  text-align: center;
 }
 
 #about ul {
   list-style: none;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 #about ul li a {
