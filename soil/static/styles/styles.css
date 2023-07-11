@@ -1,97 +1,120 @@
-/* Global Styles */
-body {
-  font-family: Arial, sans-serif;
+/* styles.css */
+
+/* Reset default margin and padding */
+body, ul {
   margin: 0;
   padding: 0;
-  color: #333;
+}
+
+/* Set a green color palette */
+:root {
+  --primary-color: #009933;
+  --secondary-color: #006622;
+  --text-color: #333333;
+}
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: #ffffff;
 }
 
 .container {
   max-width: 960px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 /* Header */
 header {
-  background-color: #009933;
+  background-color: var(--primary-color);
   padding: 20px;
-  text-align: center;
 }
 
 nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  list-style: none;
 }
 
 nav ul li {
-  display: inline;
+  display: inline-block;
   margin-right: 10px;
 }
 
 nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
+  color: #ffffff;
 }
 
-/* Hero Section */
+/* Intro Section */
 #intro {
-  background-color: #f1f1f1;
-  padding: 40px 0;
+  background-color: var(--secondary-color);
+  padding: 100px 0;
   text-align: center;
 }
 
 #intro h1 {
-  font-size: 36px;
-  color: #009933;
+  color: #ffffff;
+  font-size: 48px;
   margin-bottom: 20px;
 }
 
 #intro p {
-  font-size: 18px;
-  margin-bottom: 30px;
+  color: #ffffff;
+  font-size: 20px;
+  margin-bottom: 40px;
 }
 
-#intro .btn {
+.btn {
   display: inline-block;
-  background-color: #009933;
-  color: #fff;
   padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-size: 18px;
   text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  background-color: var(--secondary-color);
 }
 
 /* Features Section */
 #features {
-  padding: 40px 0;
+  padding: 80px 0;
   text-align: center;
 }
 
 #features h2 {
-  font-size: 28px;
-  color: #009933;
-  margin-bottom: 20px;
+  font-size: 32px;
+  margin-bottom: 40px;
 }
 
 .feature {
-  display: inline-block;
-  width: 300px;
-  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
 .feature img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 5px;
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 .feature h3 {
-  font-size: 20px;
-  color: #009933;
+  font-size: 24px;
   margin-bottom: 10px;
 }
 
@@ -99,75 +122,53 @@ nav ul li a {
   font-size: 16px;
 }
 
-/* Testimonials Section */
-.testimonials {
-  background-color: #f1f1f1;
-  padding: 40px 0;
-  text-align: center;
+/* About Section */
+#about {
+  padding: 80px 0;
 }
 
-.testimonials h2 {
-  font-size: 28px;
-  color: #009933;
+#about h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+#about p {
   margin-bottom: 20px;
 }
 
-.testimonial {
-  margin-bottom: 30px;
+#about ul {
+  list-style: none;
+  margin-bottom: 20px;
 }
 
-.testimonial img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-bottom: 10px;
+#about ul li a {
+  color: var(--primary-color);
+  text-decoration: none;
 }
 
-blockquote {
-  font-size: 18px;
-  font-style: italic;
-  margin-bottom: 10px;
+#about ul li a:hover {
+  text-decoration: underline;
 }
 
-cite {
-  font-size: 16px;
+#about a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+#about a:hover {
+  text-decoration: underline;
 }
 
 /* Footer */
-#contact {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #009933;
-  color: #fff;
-  padding: 20px 0;
+footer {
+  background-color: var(--primary-color);
+  padding: 20px;
   text-align: center;
 }
 
-#contact p {
-  margin: 0;
+footer p {
+  color: #ffffff;
+  font-size: 16px;
 }
 
-.footer-links a {
-  color: #fff;
-  text-decoration: none;
-  margin-right: 10px;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-  #intro h1 {
-    font-size: 20px;
-  }
-
-  #intro p {
-    font-size: 16px;
-  }
-
-  .feature {
-    width: 100%;
-    margin: 0 0 30px 0;
-  }
-}
 
