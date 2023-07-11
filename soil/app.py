@@ -98,7 +98,7 @@ class LoginForm(FlaskForm):
 # Define the home route
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('home.html', show_register_link=True, show_login_link=True, show_register_link=True)
 
 
 # Define the registration route
@@ -126,7 +126,7 @@ def register():
         flash('Registration successful. Please log in.', 'success')
         return redirect(url_for('login'))
 
-    return render_template('register.html', form=form)
+    return render_template('register.html', form=form, show_login_link=True, show_home_link=True)
 
 # Define the login route
 @app.route('/login', methods=['GET', 'POST'])
@@ -147,7 +147,7 @@ def login():
             flash('Invalid username or password. Please try again.', 'danger')
             return redirect(url_for('login'))
 
-    return render_template('login.html', form=form)
+    return render_template('login.html', show_register_link=True, show_home_link=True, form=form)
 
 # Define the logout route
 @app.route('/logout')
@@ -162,7 +162,7 @@ def logout():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard.html', user=current_user)
+    return render_template('dashboard.html', user=current_user, show_logout_link=True)
 
 """@app.route("/")
 def landing_page():
@@ -335,7 +335,7 @@ def soil_properties():
                 db.session.commit()
                 #return render_template("soil_properties.html", latitude=latitude, longitude=longitude, result=real)
 
-    return render_template("soil_properties.html", show_dashboard_link=True)
+    return render_template("soil_properties.html", show_dashboard_link=True, show_logout_link=True)
 
 """@app.route('/soil-data')
 @login_required
@@ -402,7 +402,7 @@ def soil_data():
 
         return render_template('soil_data.html', soil_data=soil_data, show_dashboard_link=True)
     else:
-        return render_template('soil_data.html', soil_data=[], show_dashboard_link=True)
+        return render_template('soil_data.html', soil_data=[], show_dashboard_link=True, show_logout_link=True)
 
 
 """@app.route('/dashboard')
@@ -478,7 +478,7 @@ def map():
     #latitude = user.latitude
     #longitude = user.longitude
 
-    return render_template('map.html', show_dashboard_link=True)#, latitude=latitude, longitude=longitude)
+    return render_template('map.html', show_dashboard_link=True, show_logout_link=True)#, latitude=latitude, longitude=longitude)
 
 """@app.route('/soil-map', methods=['GET'])
 @login_required

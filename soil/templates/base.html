@@ -17,10 +17,18 @@
   <header>
     <nav>
       <ul>
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('register') }}">Sign Up</a></li>
+        {% if show_home_link %}
+	<li><a href="{{ url_for('home') }}">Home</a></li>
+	{% endif %}
+        {% if show_register_link %}
+	<li><a href="{{ url_for('register') }}">Sign Up</a></li>
+	{% endif %}
+	{% if show_logout_link %}
         <li><a href="{{ url_for('logout') }}">Logout</a></li>
-        <li><a href="{{ url_for('login') }}">Login</a></li>
+	{% endif %}
+        {% if show_login_link %}
+	<li><a href="{{ url_for('login') }}">Login</a></li>
+	{% endif %}
 	{% if show_dashboard_link %}
         <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
 	{% endif %}
