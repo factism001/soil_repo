@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 #from models.user import User, db  # Import the User model from your database module or file
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
 from flask_migrate import Migrate
-from forms import RegistrationForm, LoginForm
+#from forms import RegistrationForm, LoginForm
 from functools import wraps
 import requests
 from flask_wtf import FlaskForm
@@ -15,8 +15,15 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'opeyemi'
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:opeyemi@localhost:3306/soil_db?charset=utf8mb4"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://factism:soilanalystapp@factism.mysql.pythonanywhere-services.com/factism$soil_db?charset=utf8mb4"
 
+SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{username}:{password}@{hostname}/{databasename}".format(
+    username="the username from the 'Databases' tab",
+    password="the password you set on the 'Databases' tab",
+    hostname="the database host address from the 'Databases' tab",
+    databasename="the database name you chose, probably yourusername$comments",
+)
+app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 # Set the SQLAlchemy track modifications to False
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 

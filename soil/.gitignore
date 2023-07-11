@@ -3,3 +3,6 @@ env/
 __pycache__
 /__pycache__
 .vercel
+__pycache__/
+static_cond/
+migrations/
