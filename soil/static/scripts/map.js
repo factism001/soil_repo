@@ -1,6 +1,6 @@
 (function (L, document) {
     // Map initialization 
-    var map = L.map('map').setView([14.0860746, 100.608406], 6);
+    var map = L.map('map').setView([14.0860746, 100.608406], 1);
 
     //osm layer
     var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
