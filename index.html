@@ -1,87 +1,79 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Soil Analyst</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Add your stylesheets or scripts here -->
-	<link rel="stylesheet" href="soil/static/styles/home.css">
-	<style>
-          html, 
-	  body {
-		  scroll-behavior: smooth;
-	  }
-	</style>
-      </head>
-      <body>
-	      <!-- Header Section -->
-	<header>
-	  <nav>
-            <ul>
-              <li><a href="https://factism.pythonanywhere.com/">Demo</a></li>
-              <li><a href="https://youtu.be/UbCeF_kqTGk">Inspiration</a></li>
-            </ul>
-          </nav>
-	</header>
-	  <section class="hero">
-            <div class="container">
-              <h1>Soil Analyst</h1>
-              <p>Analyze your soil, get real-time location, and explore soil properties anywhere in Africa.</p>
-              <a href="https://factism.pythonanywhere.com/" class="cta-button">Demo</a>
-            </div>
-          </section>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soil Analyst App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <section id="intro">
+    <div class="container">
+      <h1>Soil Analyst App</h1>
+      <p>Agriculture-related soil testing and analysis tool</p>
+      <a href="https://factism.pythonanywhere.com/" class="btn">Launch App</a>
+    </div>
+  </section>
+  
+  <section id="features">
+    <div class="container">
+      <h2>Key Features</h2>
+      <div class="feature">
+        <img src="feature1.png" alt="Feature 1">
+        <h3>Soil Testing</h3>
+        <p>Test different properties of soils by inputting location coordinates of interested areas.</p>
+      </div>
+      <div class="feature">
+        <img src="feature2.png" alt="Feature 2">
+        <h3>Area Calculation</h3>
+        <p>Calculate the total area of an interested area of land.</p>
+      </div>
+      <div class="feature">
+        <img src="feature3.png" alt="Feature 3">
+        <h3>Real-time Location</h3>
+        <p>Get your real-time location coordinates for precise analysis.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="about">
+    <div class="container">
+      <h2>About Soil Analyst App</h2>
+      <p>The Soil Analyst App is a software engineering student portfolio project that aims to provide a user-friendly tool for testing and analyzing different properties of soils in the African continent. Inspired by the need for accurate soil analysis in agriculture, our team developed this app to assist farmers and researchers in making informed decisions.</p>
+      <p>This project was developed as part of the Portfolio Project for ALX Africa. To learn more about the team members and their contributions, visit our LinkedIn, GitHub, and Twitter profiles:</p>
+      <ul>
+        <li><a href="#">Team Member 1 (LinkedIn)</a></li>
+        <li><a href="#">Team Member 1 (GitHub)</a></li>
+        <li><a href="#">Team Member 1 (Twitter)</a></li>
+        <li><a href="#">Team Member 2 (LinkedIn)</a></li>
+        <li><a href="#">Team Member 2 (GitHub)</a></li>
+        <li><a href="#">Team Member 2 (Twitter)</a></li>
+        <li><a href="#">Team Member 3 (LinkedIn)</a></li>
+        <li><a href="#">Team Member 3 (GitHub)</a></li>
+        <li><a href="#">Team Member 3 (Twitter)</a></li>
+      </ul>
+      <p>Visit our GitHub repository for the project:</p>
+      <a href="#">GitHub Repository</a>
+    </div>
+  </section>
+  
+  <footer id="contact">
+    <div class="container">
+      <p>Contact us at soilanalyst@example.com</p>
+    </div>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
 
-          <!-- Features Section -->
-          <section class="features">
-            <div class="container">
-              <h2>Key Features</h2>
-              <div class="feature">
-		      <img src="soil/static/styles/realtime_location.jpg" alt="Feature 1">
-                <h3>Real-time Location</h3>
-                <p>Get your current location and coordinates instantly.</p>
-              </div>
-              <div class="feature">
-                <img src="soil/static/styles/polgon_area.png" alt="Feature 2">
-                <h3>Land Measurement</h3>
-                <p>Measure the area of your land using coordinates.</p>
-              </div>
-              <div class="feature">
-                <img src="soil/static/styles/soilproperties.jpg" alt="Feature 3">
-                <h3>Soil Properties</h3>
-                <p>Access detailed soil properties for your location.</p>
-              </div>
-            </div>   
-          </section>
-
-          <!-- Testimonials Section -->
-          <section class="testimonials">
-            <div class="container">
-              <h2>About soil analyst</h2>
-              <div class="testimonial">
-                <img src="user1.jpg" alt="User 1">
-                <blockquote>"This project was inspired by my prior background in the area of Agriculture. During my postgraduate studies research, I found out that there is no single point where students, researchers, and farmers can get a comprehensive properties of soils in africa, unlike in other regions of the world. The vast knowledge I have been priviledged to get from the ALX Africa software engineering program enabled me to try and close this gap."</blockquote>
-                <cite>- Fatola Fatai, Developer</cite>
-              </div>
-              <!--div class="testimonial">
-                <img src="user2.jpg" alt="User 2">
-                  <blockquote>"The precision and accuracy of the soil analysis provided by Soil Analyst are impressive. Highly recommended!"</blockquote>
-                  <cite>- Jane Smith, Agronomist</cite>
-              </div-->
-	      <div>
-		      <a href="https://youtu.be/UbCeF_kqTGk" target="_blank">Inspiration</a>
-	      </div>
-            </div>
-          </section>
-	  <!-- Footer Section -->
-          <footer>
-	    <div class="container">
-	      <div class="footer-links">
-                <a href="https://www.linkedin.com/in/fatai-fatola" target="_blank">LinkedIn</a>
-		<a href="https://github.com/factism001/soilanalyst" target="_blank">Project</a>
-                <a href="https://github.com/factism001/" target="_blank">Developer</a>
-              </div>
-              <p>&copy; 2023 Soil Analyst. All rights reserved.</p>
-            </div>
-          </footer>
-      </body>
-</html> 
