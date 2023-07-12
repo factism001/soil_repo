@@ -167,7 +167,6 @@ nav ul li a {
 /* Footer */
 footer {
   background-color: var(--primary-color);
-  padding: 20px;
   text-align: center;
   position: fixed;
   left: 0;
