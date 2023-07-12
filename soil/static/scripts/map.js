@@ -114,7 +114,7 @@ if (!navigator.geolocation) {
     searchControl.onAdd = function () {
         var container = L.DomUtil.create("div", "leaflet-control-search");
 
-        container.innerHTML = '<input type="text" placeholder="Latitude, Longitude">' +
+        container.innerHTML = '<input type="text" placeholder="Latitude, Longitude (e.g 7.501326, 4.058810">' +
             '<button id="search-btn">Search</button>';
 
         L.DomEvent.disableClickPropagation(container);

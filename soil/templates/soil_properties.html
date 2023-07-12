@@ -11,8 +11,8 @@
   <script src="{{ url_for('static', filename='scripts/soil_properties.js') }}"></script>
   <div class="register">
     <form action="/soil-properties" method="post">
-    <input type="text" name="latitude" placeholder="Latitude of location" required  />
-    <input type="text" name="longitude" placeholder="Longitude of location" required />
+    <input type="text" name="latitude" placeholder="Latitude (e.g 7.501326)" required  />
+    <input type="text" name="longitude" placeholder="Longitude (e.g 4.058810)" required />
     <!--input type="text" name="property" placeholder="Enter a prop" /-->
     <select id="propertySelect" type="text" name="property" required onchange="updateDepthOptions()">
       <option value="aluminium_extractable">Aluminium, extractable</option>
