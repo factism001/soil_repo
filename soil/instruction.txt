@@ -5,23 +5,23 @@ if youve issues with database, use 'flask db downgrade' to roll back, 'flask db 
 
 To handle database migrations in Flask using Flask-Migrate, you can follow these steps:
 
-Install Flask-Migrate: Make sure you have Flask-Migrate installed in your project. You can install it using pip:
+1. Install Flask-Migrate: Make sure you have Flask-Migrate installed in your project. You can install it using pip:
 
 pip install Flask-Migrate
 
-Initialize Migration Environment: In your command line, navigate to your project directory and run the following command to initialize the migration environment:
+2. Initialize Migration Environment: In your command line, navigate to your project directory and run the following command to initialize the migration environment:
 
 flask db init
 
 This command will create a migrations directory in your project, which will contain migration scripts.
 
-Create Initial Migration: Run the following command to generate an initial migration script:
+3. Create Initial Migration: Run the following command to generate an initial migration script:
 
 flask db migrate -m "Initial migration"
 
 This command will compare your SQLAlchemy models with the current database schema and generate a migration script based on the differences.
 
-Apply Migrations: To apply the generated migration script and update the database schema, run the following command:
+4. Apply Migrations: To apply the generated migration script and update the database schema, run the following command:
 
 flask db upgrade
 

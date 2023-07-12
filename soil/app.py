@@ -56,6 +56,7 @@ def load_user(user_id):
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
+    email = db.Column(db.String(50), unique=True, nullable=False)
     password_hash = db.Column(db.String(255), nullable=False)
 
     def __repr__(self):
@@ -70,6 +71,7 @@ class User(db.Model, UserMixin):
 # Define the rsgistration form
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
@@ -108,6 +110,7 @@ def register():
     if form.validate_on_submit():
         # Process the registration form data
         username = form.username.data
+        email = form.email.data
         password = form.password.data
 
         existing_user = User.query.filter_by(username=username).first()
@@ -116,7 +119,7 @@ def register():
             return redirect(url_for('register'))
 
         # Create a new user instance
-        user = User(username=username)
+        user = User(username=username, email=email)
         user.set_password(password)
 
         # Add the user to the database
