@@ -119,7 +119,7 @@ def register():
             return redirect(url_for('register'))
 
         # Create a new user instance
-        user = User(username=username)
+        user = User(username=username, email=email)
         user.set_password(password)
 
         # Add the user to the database
