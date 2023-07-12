@@ -41,6 +41,7 @@ a:hover {
 header {
   background-color: var(--primary-color);
   padding: 20px;
+  text-align: center;
 }
 
 nav ul {
@@ -50,7 +51,6 @@ nav ul {
 nav ul li {
   display: inline-block;
   margin-right: 10px;
-  text-align: center;
 }
 
 nav ul li a {
@@ -167,7 +167,7 @@ nav ul li a {
 /* Footer */
 footer {
   background-color: var(--primary-color);
-  padding: 0px 0;
+  padding: 0px;
   text-align: center;
   position: fixed;
   left: 0;
