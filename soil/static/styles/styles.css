@@ -156,6 +156,7 @@ nav ul li a {
 #about a {
   color: var(--primary-color);
   text-decoration: none;
+  text-align: center;
 }
 
 #about a:hover {
@@ -165,7 +166,7 @@ nav ul li a {
 /* Footer */
 footer {
   background-color: var(--primary-color);
-  padding: 0px;
+  padding: 20px 0;
   text-align: center;
   position: fixed;
   left: 0;
