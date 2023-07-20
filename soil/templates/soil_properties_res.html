@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Soil Properties - My Soil App{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}"/>
+{% endblock %}
+
+{% block content %}
+<h1 class="title">Soil Properties</h1>
+  <h2>Display soil properties based on coordinates</h2>
+  <p>Latitude: {{ latitude }}</p>
+  <p>Longitude: {{ longitude }}</p>
+  {% if result %}
+  <div class="result"><h3>{{ result }}</h3></div>
+  {% endif %}
+  <p><a href="{{ url_for('dashboard') }}">Back to dashboard</a></p>
+  <p><a href="{{ url_for('map') }}">Back to map</a></p>
+  </div>
+{% endblock %}

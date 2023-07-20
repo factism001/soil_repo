@@ -324,7 +324,7 @@ def soil_properties():
                     for key3, value3 in data_val.items():
                         if key3 == 'unit':
                             real = "Name: {}   Value: {} {}".format(key, value2, value3)
-                    return render_template("soil_properties.html", latitude=latitude, longitude=longitude, result=real)
+                    return render_template("soil_properties_res.html", latitude=latitude, longitude=longitude, result=real)
 
                 #latitude = session.get('latitude')
                 #longitude = session.get('longitude')
