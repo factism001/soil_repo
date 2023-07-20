@@ -54,13 +54,4 @@
     </select>
     <input type="submit" value="Test" />
   </form>
-  <p>Latitude: {{ latitude }}</p>
-  <p>Longitude: {{ longitude }}</p>
-  <p>Display soil properties based on coordinates</p>
-  {% if result %}
-  <div class="result">{{ result }}</div>
-  {% endif %}
-  <p><a href="{{ url_for('dashboard') }}">Back to dashboard</a></p>
-  <p><a href="{{ url_for('map') }}">Back to map</a></p>
-  </div>
 {% endblock %}
