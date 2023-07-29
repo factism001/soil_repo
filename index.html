@@ -1,96 +1,73 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-
-    <title>Soil Analyst App</title>
-  </head>
-
-  <body>
-
-    <!-- Navigation bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Soil Analyst</a>
-      <button class="navbar-toggler" type="button">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Demo</a>
-          </li>
-        </ul>
-      </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soil Analyst App</title>
+  <base href="https://factism001.github.io/soilanalyst/">
+  <link rel="stylesheet" href="soil/static/styles/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#contact">Contact</a></li>
+	<li><a href="https://youtu.be/2JVDvFP6H8U">Demo</a></li>
+      </ul>
     </nav>
-
-    <!-- Jumbotron -->
-    <div class="jumbotron">
-      <h1 class="display-4">Soil Analyst App</h1>
-      <p class="lead">Testing and analysis tool for African soils</p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Launch App</a>
-    </div>
-
-    <!-- Content sections -->
+  </header>
+  
+  <section id="intro">
     <div class="container">
-      <!-- Features -->
-      <section id="features">
-        <h2>Key Features</h2>
-        <div class="row">
-          <div class="col-md-4">
-            <h3>Soil Testing</h3>
-            <p>Test different properties of soils by inputting location coordinates of interested areas.</p>
-          </div>
-          <div class="col-md-4">  
-            <h3>Area Calculation</h3>
-            <p>Calculate the total area of an interested area of land.</p>
-          </div>
-          <div class="col-md-4">
-            <h3>Real-time Location</h3>  
-            <p>Get your real-time location coordinates for precise analysis.</p>
-          </div>
-        </div>
-      </section>
-      
-      <!-- About -->
-      <section id="about">
-        <h2>About Soil Analyst App</h2>
-        <p>The Soil Analyst App aims to provide a user-friendly tool for testing and analyzing different properties of soils in the African continent. Inspired by the need for accurate soil analysis in agriculture, and empowering average farmers and researchers who lack the financial capacity to carry out expensive and ellaborate laboratory analysis, I developed this app, which will aid them in making informed decisions.</p>
-        
-        <p>To learn more about the me and my other contributions, visit my LinkedIn and GitHub profiles:</p>
-        
-        <ul>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">GitHub</a></li>  
-        </ul>
-        
-        <p>Visit the GitHub repository for the project:<a href="#">GitHub Repository</a></p>
-        
-      </section>
-      
+      <h1>Soil Analyst App</h1>
+      <p>Testing and analysis tool for African soils</p>
+      <a href="https://factism.pythonanywhere.com/" class="btn">Launch App</a>
     </div>
-
-    <!-- Footer -->
-    <footer class="text-center">
-      <small>© 2023 Soil Analyst. All rights reserved.</small>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  </body>
+  </section>
+  
+  <section id="features">
+    <div class="container">
+      <h2>Key Features</h2>
+      <div class="feature">
+        <img src="soil/static/styles/soilproperties.jpg" alt="Feature 1">
+        <h3>Soil Testing</h3>
+        <p>Test different properties of soils by inputting location coordinates of interested areas.</p>
+      </div>
+      <div class="feature">
+        <img src="soil/static/styles/polgon_area.png" alt="Feature 2">
+        <h3>Area Calculation</h3>
+        <p>Calculate the total area of an interested area of land.</p>
+      </div>
+      <div class="feature">
+        <img src="soil/static/styles/realtime_location.jpg" alt="Feature 3">
+        <h3>Real-time Location</h3>
+        <p>Get your real-time location coordinates for precise analysis.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="about">
+    <div class="container">
+      <h2>About Soil Analyst App</h2>
+      <p>The Soil Analyst App aims to provide a user-friendly tool for testing and analyzing different properties of soils in the African continent. Inspired by the need for accurate soil analysis in agriculture, and empowering average farmers and researchers who lack the financial capacity to carry out expensive and ellaborate laboratory analysis, I developed this app, which will aid them in making informed decisions.</p>
+      <p>To learn more about the me and my other contributions, visit my LinkedIn and GitHub profiles:</p>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/fat
+ai-fatola" target="_blank">LinkedIn</a></li>
+        <li><a href="https://github.com/factism001/" target="_blank">GitHub</a></li>
+      </ul>
+      <p>Visit the GitHub repository for the project:<a href="https://github.com/factism001/soilanalyst">GitHub Repository</a></p>
+    </div>
+  </section>
+  
+  <footer id="contact">
+    <div class="container">
+      <p>&copy; 2023 Soil Analyst. All rights reserved.</p>
+    </div>
+  </footer>
+  
+</body>
 </html>
+
