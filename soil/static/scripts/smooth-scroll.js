@@ -1,4 +1,4 @@
-/*Handles smooth scolling
+//Handles smooth scolling
 function smoothScroll(e) {
   e.preventDefault();
   
@@ -17,20 +17,24 @@ const navLinks = document.querySelectorAll('.nav-link');
 navLinks.forEach(link => {
   link.addEventListener('click', smoothScroll);
 });
-*/
 
 //Handles back to top
-let backToTop = document.getElementById('backToTop');
+// Get button element
+const backToTop = document.querySelector('#backToTop');
 
-window.onscroll = function() {
-  if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 20) {
-    backToTop.classList.add('visible');
-  } else {
-    backToTop.classList.remove('visible');
+// Scroll handler to show/hide button
+window.addEventListener('scroll', () => {
+
+  if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+    backToTop.classList.add('show');
+  } else { 
+    backToTop.classList.remove('show');
   }
-}
 
+});
+
+// Scroll to top on click
 backToTop.addEventListener('click', () => {
-  document.body.scrollTop = 0; 
-  document.documentElement.scrollTop = 0;
-})
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0; 
+});
