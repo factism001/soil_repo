@@ -1,4 +1,4 @@
-//Handles smooth scolling
+/*Handles smooth scolling
 function smoothScroll(e) {
   e.preventDefault();
   
@@ -17,6 +17,7 @@ const navLinks = document.querySelectorAll('.nav-link');
 navLinks.forEach(link => {
   link.addEventListener('click', smoothScroll);
 });
+*/
 
 //Handles back to top
 let backToTop = document.getElementById('backToTop');
