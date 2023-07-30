@@ -22,7 +22,7 @@ navLinks.forEach(link => {
 let backToTop = document.getElementById('backToTop');
 
 window.onscroll = function() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 20) {
     backToTop.classList.add('visible');
   } else {
     backToTop.classList.remove('visible');
