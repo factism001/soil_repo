@@ -1,3 +1,4 @@
+//Handles smooth scolling
 function smoothScroll(e) {
   e.preventDefault();
   
@@ -16,3 +17,19 @@ const navLinks = document.querySelectorAll('.nav-link');
 navLinks.forEach(link => {
   link.addEventListener('click', smoothScroll);
 });
+
+//Handles back to top
+let backToTop = document.getElementById('backToTop');
+
+window.onscroll = function() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+}
+
+backToTop.addEventListener('click', () => {
+  document.body.scrollTop = 0; 
+  document.documentElement.scrollTop = 0;
+})
