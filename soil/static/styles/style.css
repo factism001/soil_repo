@@ -1,0 +1,119 @@
+/* Styles */
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  background: #325b15; 
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+.hero {
+  background: #5c983f url('hero-bg.jpg');
+  color: #fff;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.hero h1 {
+  font-size: 48px;
+  text-shadow: 1px 1px #000;
+}
+
+.hero p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+section {
+  padding: 40px 0;
+}
+
+section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+footer {
+  background: #325b15;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.social {
+  list-style: none;
+  padding: 0;
+}
+
+.social li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+
+  /* Styles for mobile */
+
+}
+
+#features h2, 
+#features h3 {
+  text-align: center;
+}
+
+#features img {
+  width: 100%;
+  max-height: 200px;
+}
+
+#features .col-md-4 {
+  padding: 15px;
+}
+
+#features p {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#features h3 {
+  margin: 20px 0 10px;
+}
+
+#about h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#about p {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+#about .btn {
+  display: block;
+  margin: 0 auto;
+}
+
+#about .container {
+  padding: 40px 15px;
+}
+
+
+
+
+
+
+
+

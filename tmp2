@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soil Analyst App</title>
+  <base href="https://factism001.github.io/soilanalyst/">
+  <link rel="stylesheet" href="soil/static/styles/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#contact">Contact</a></li>
+	<li><a href="https://youtu.be/2JVDvFP6H8U">Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <section id="intro">
+    <div class="container">
+      <h1>Soil Analyst App</h1>
+      <p>Testing and analysis tool for African soils</p>
+      <a href="https://factism.pythonanywhere.com/" class="btn">Launch App</a>
+    </div>
+  </section>
+  
+  <section id="features">
+    <div class="container">
+      <h2>Key Features</h2>
+      <div class="feature">
+        <img src="soil/static/styles/soilproperties.jpg" alt="Feature 1">
+        <h3>Soil Testing</h3>
+        <p>Test different properties of soils by inputting location coordinates of interested areas.</p>
+      </div>
+      <div class="feature">
+        <img src="soil/static/styles/polgon_area.png" alt="Feature 2">
+        <h3>Area Calculation</h3>
+        <p>Calculate the total area of an interested area of land.</p>
+      </div>
+      <div class="feature">
+        <img src="soil/static/styles/realtime_location.jpg" alt="Feature 3">
+        <h3>Real-time Location</h3>
+        <p>Get your real-time location coordinates for precise analysis.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="about">
+    <div class="container">
+      <h2>About Soil Analyst App</h2>
+      <p>The Soil Analyst App aims to provide a user-friendly tool for testing and analyzing different properties of soils in the African continent. Inspired by the need for accurate soil analysis in agriculture, and empowering average farmers and researchers who lack the financial capacity to carry out expensive and ellaborate laboratory analysis, I developed this app, which will aid them in making informed decisions.</p>
+      <p>To learn more about the me and my other contributions, visit my LinkedIn and GitHub profiles:</p>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/fat
+ai-fatola" target="_blank">LinkedIn</a></li>
+        <li><a href="https://github.com/factism001/" target="_blank">GitHub</a></li>
+      </ul>
+      <p>Visit the GitHub repository for the project:<a href="https://github.com/factism001/soilanalyst">GitHub Repository</a></p>
+    </div>
+  </section>
+  
+  <footer id="contact">
+    <div class="container">
+      <p>&copy; 2023 Soil Analyst. All rights reserved.</p>
+    </div>
+  </footer>
+  
+</body>
+</html>
+
