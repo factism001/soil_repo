@@ -25,7 +25,7 @@ const backToTop = document.querySelector('#backToTop');
 // Scroll handler to show/hide button
 window.addEventListener('scroll', () => {
 
-  if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+  if (document.body.scrollTop > 1 || document.documentElement.scrollTop > 1) {
     backToTop.classList.add('show');
   } else { 
     backToTop.classList.remove('show');
