@@ -19,6 +19,7 @@ body {
 
 .nav-link {
   color: rgba(255,255,255,1);
+  font-weight: bold;
 }
 
 .hero {
